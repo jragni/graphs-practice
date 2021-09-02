@@ -138,9 +138,9 @@ describe("DFS", function () {
     let result = JSON.stringify(graph.depthFirstSearch(S));
     let validResult =
       result ===
-      JSON.stringify(["S", "U", "V", "W", "T", "R", "Q", "Y", "X", "P"]) ||
+        JSON.stringify(["S", "U", "V", "W", "T", "R", "Q", "Y", "X", "P"]) ||
       result ===
-      JSON.stringify(["S", "P", "X", "U", "V", "W", "Y", "R", "Q", "T"]);
+        JSON.stringify(["S", "P", "X", "U", "V", "W", "Y", "R", "Q", "T"]);
 
     expect(validResult).toBe(true);
   });
@@ -194,14 +194,14 @@ describe("BFS", function () {
       "Y",
       "R",
       "W",
-      "T"
+      "T",
     ]);
   });
 });
 
 describe("distanceOfShortestPath", function () {
   it("should return distance of shortest path from start to end vertices", function () {
-    let graph = new Graph()
+    let graph = new Graph();
 
     let r = new Node("R");
     let i = new Node("I");
@@ -209,14 +209,14 @@ describe("distanceOfShortestPath", function () {
     let h = new Node("H");
     let m = new Node("M");
 
-    graph.addVertices([r, i, t, h, m])
+    graph.addVertices([r, i, t, h, m]);
 
-    graph.addEdge(r, i)
-    graph.addEdge(r, t)
-    graph.addEdge(r, h)
-    graph.addEdge(i, t)
-    graph.addEdge(t, h)
-    graph.addEdge(h, m)
+    graph.addEdge(r, i);
+    graph.addEdge(r, t);
+    graph.addEdge(r, h);
+    graph.addEdge(i, t);
+    graph.addEdge(t, h);
+    graph.addEdge(h, m);
 
     expect(graph.distanceOfShortestPath(r, m)).toBe(2);
     expect(graph.distanceOfShortestPath(t, r)).toBe(1);
@@ -224,3 +224,4 @@ describe("distanceOfShortestPath", function () {
     expect(graph.distanceOfShortestPath(t, "rogue node")).toBe(undefined);
   });
 });
+
