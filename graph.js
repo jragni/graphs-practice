@@ -62,12 +62,34 @@ class Graph {
       }
     }
     _dfsHelper(start);
-    console.log(nodes);
     return nodes;
   }
 
   /** traverse graph with BDS and returns array of Node values */
-  breadthFirstSearch(start) {}
+  breadthFirstSearch(start) {
+    const queue = [start]; // would implement a queue with LinkedList if needed
+    const nodes = [];
+    const visited = new Set();
+
+    function _helper(node) {
+      if (!visited.has(node) && queue.length !== 0) {
+        for (let n of node.adjacent) {
+          if (!visited.has(node)) {
+            queue.push(n);
+          }
+        }
+
+        visited.add(node);
+        let currNode = queue.shift();
+        console.log(currNode.value);
+        nodes.push(currNode.value);
+        _helper(queue[0]);
+      }
+    }
+
+    _helper(start);
+    return nodes;
+  }
 
   /** find the distance of the shortest path from the start vertex to the end vertex */
   distanceOfShortestPath(start, end) {}
