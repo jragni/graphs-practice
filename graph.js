@@ -54,8 +54,10 @@ class Graph {
 
     function _dfsHelper(node) {
       if (!visited.has(node)) {
+        visited.add(node);
         for (let n of node.adjacent) {
           if (!visited.has(n)) nodes.push(n.value);
+          _dfsHelper(n);
         }
       }
     }
