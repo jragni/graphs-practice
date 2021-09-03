@@ -199,7 +199,7 @@ describe("BFS", function () {
   });
 });
 
-describe("distanceOfShortestPath", function () {
+xdescribe("distanceOfShortestPath", function () {
   it("should return distance of shortest path from start to end vertices", function () {
     let graph = new Graph();
 

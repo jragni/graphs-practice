@@ -68,27 +68,23 @@ class Graph {
   /** traverse graph with BDS and returns array of Node values */
   breadthFirstSearch(start) {
     const queue = [start]; // would implement a queue with LinkedList if needed
-    const nodes = [];
     const visited = new Set();
 
-    function _helper(node) {
-      if (!visited.has(node) && queue.length !== 0) {
-        for (let n of node.adjacent) {
-          if (!visited.has(node)) {
-            queue.push(n);
-          }
-        }
+    function _bfsHelper(node) {
+      if (!node || queue.length === 0) return;
 
-        visited.add(node);
-        let currNode = queue.shift();
-        console.log(currNode.value);
-        nodes.push(currNode.value);
-        _helper(queue[0]);
+      for (let n of node.adjacent) {
+        if (!visited.has(n.value) && !queue.includes(n)) {
+          queue.push(n);
+        }
       }
+      let currNode = queue.shift();
+      visited.add(currNode.value);
+      _bfsHelper(queue[0]);
     }
 
-    _helper(start);
-    return nodes;
+    _bfsHelper(start);
+    return Array.from(visited);
   }
 
   /** find the distance of the shortest path from the start vertex to the end vertex */
